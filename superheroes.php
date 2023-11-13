@@ -65,6 +65,24 @@ $superheroes = [
 
 ?>
 
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'GET'):
+$superName = filter_input(INPUT_GET, 'superhero', FILTER_SANITIZE_STRING);
+foreach($superheros as  $superhero):
+    if(in_array($superName, $superhero)):
+       
+?>
+
+        <h3> <?= $superhero['alias']; ?></h3>
+        <h4> <?= $superhero['name']; ?></h4>
+        <p> <?= $superhero['biography']; ?></p>
+
+<?php endif; 
+ endforeach; 
+ endif; 
+
+?>
+
 <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
